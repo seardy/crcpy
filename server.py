@@ -1,5 +1,5 @@
 import socket
-from crc import CrcUtilities
+from utilities import crc
 
 # socket requirements
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
@@ -17,11 +17,8 @@ print('Received: ' , data)
 #split received message
 msg, gen, crc_code = data.split(' ')
 
-# create a CrcUtilities object for calculate the crc checksum
-calculator = CrcUtilities()
-
 # calculate the crc checksum of data received
-result = calculator.crc(msg, gen, crc_code)
+result = crc(msg, gen, crc_code)
 
 # show the crc_code
 print ('Checksum result: ' ,result)
@@ -30,7 +27,7 @@ print ('Checksum result: ' ,result)
 result = int(result)
 
 # if checksum is not 0  then there was a transmission bit error.
-if(result != 0):
+if result != 0:
 	response = 'Error, please send it again!'
 else:
 	response = 'Ok'
