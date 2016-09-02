@@ -8,6 +8,7 @@ data = input('Ingrese un mensaje: ')
 generator = input('Ingrese el generador: ')
 
 crc_code = crc(data,generator)
+print(crc_code)
 
 request = data + ' ' + generator + ' '+ crc_code
 sock.send(request.encode())

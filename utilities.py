@@ -1,6 +1,6 @@
 import binascii,sys
 
-def crc(self,message, generator, crc_code='0000'):
+def crc(message, generator, crc_code='0000'):
 
 	if int(crc_code) == 0 : # if there isnt a crc_code and is the first xor module
 		crc_code = ''
